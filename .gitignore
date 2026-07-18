@@ -1,0 +1,18 @@
+# Dependencies and build output
+node_modules/
+.turbo/
+.next/
+dist/
+coverage/
+
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.venv/
+
+# Environment and local tooling
+.env
+.env.local
+.DS_Store
+

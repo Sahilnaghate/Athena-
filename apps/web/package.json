@@ -1,0 +1,25 @@
+{
+  "name": "@athena/web",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint .",
+    "test": "node --test"
+  },
+  "dependencies": {
+    "@athena/config": "workspace:*",
+    "next": "15.1.1",
+    "react": "19.0.0",
+    "react-dom": "19.0.0"
+  },
+  "devDependencies": {
+    "@types/react": "^19.0.2",
+    "@types/react-dom": "^19.0.2",
+    "autoprefixer": "^10.4.20",
+    "eslint-config-next": "15.1.1",
+    "tailwindcss": "^3.4.16"
+  }
+}
