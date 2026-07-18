@@ -1,115 +1,240 @@
-┌─────────────────────────────────────────────┐
-│                 USER LAYER                  │
-│                                             │
-│  Dashboard • Mobile • Reports • AI Chat     │
-└─────────────────────────────────────────────┘
-                     │
-                     ▼
-┌─────────────────────────────────────────────┐
-│            APPLICATION LAYER                │
-│                                             │
-│ Decision Center • Portfolio • Journal       │
-└─────────────────────────────────────────────┘
-                     │
-                     ▼
-═══════════════════════════════════════════════
-            ATHENA CORE (Brain)
-═══════════════════════════════════════════════
+# ATHENA Reference Architecture
 
-1. Market Intelligence Engine
+```mermaid
+flowchart TB
 
-↓
+%% ==========================
+%% USER LAYER
+%% ==========================
 
-2. Scanner Intelligence Engine
+subgraph USER["Presentation Layer"]
+U1["Web Dashboard"]
+U2["Mobile App"]
+U3["AI Chat"]
+U4["Reports"]
+end
 
-↓
+%% ==========================
+%% APPLICATION LAYER
+%% ==========================
 
-3. Setup Intelligence Engine
+subgraph APP["Application Layer"]
 
-↓
+API["API Gateway"]
 
-4. Probabilistic Intelligence Engine
+AUTH["Authentication"]
 
-↓
+CONFIG["Configuration"]
 
-5. Investment Committee
+NOTIFY["Notification Service"]
 
-↓
+end
 
-6. Decision Engine
+%% ==========================
+%% CORE SERVICES
+%% ==========================
 
-↓
+subgraph CORE["ATHENA Core Services"]
 
-7. Risk Engine
+MKT["Market Intelligence Service"]
 
-↓
+SCAN["Scanner Intelligence Service"]
 
-8. Portfolio Engine
+SETUP["Setup Intelligence Service"]
 
-↓
+PROB["Probabilistic Intelligence Service"]
 
-9. Knowledge Engine
+COMMITTEE["Investment Committee Service"]
 
-↓
+DECISION["Investment Decision Service"]
 
-10. AI Coach
+VALIDATION["Validation Intelligence Service"]
 
-↓
+RISK["Risk Intelligence Service"]
 
-11. Strategy Lab
+PORT["Portfolio Intelligence Service"]
 
-↓
+KNOWLEDGE["Knowledge Intelligence Service"]
 
-12. Reporting Engine
+LEARNING["Learning Intelligence Service"]
 
-═══════════════════════════════════════════════
-                 DATA LAYER
-═══════════════════════════════════════════════
+LAB["Strategy Lab Service"]
 
-Market Data
+REPORT["Reporting Service"]
 
-↓
+end
 
-Feature Store
+%% ==========================
+%% AI LAYER
+%% ==========================
 
-↓
+subgraph AI["AI Layer"]
 
-Decision Store
+COACH["AI Coach"]
 
-↓
+MARKET_AGENT["Market Analyst"]
 
-Knowledge Graph
+TECH_AGENT["Technical Analyst"]
 
-↓
+PROB_AGENT["Probability Expert"]
 
-Portfolio Database
+RISK_AGENT["Risk Manager"]
 
-↓
+PORT_AGENT["Portfolio Manager"]
 
-Research Database
+BEHAVIOR_AGENT["Behaviour Coach"]
 
-↓
+RESEARCH_AGENT["Research Analyst"]
 
-Audit Logs
+end
 
-═══════════════════════════════════════════════
-             INFRASTRUCTURE LAYER
-═══════════════════════════════════════════════
+%% ==========================
+%% DATA LAYER
+%% ==========================
 
-FastAPI
+subgraph DATA["Data Layer"]
 
-PostgreSQL
+FEATURE["Feature Store"]
 
-Redis
+MARKETDB["Market Database"]
 
-Celery
+PORTDB["Portfolio Database"]
 
-OpenAI
+KNOWLEDGEGRAPH["Knowledge Graph"]
 
-Docker
+RESEARCHDB["Research Database"]
 
-GitHub
+EVENTSTORE["Decision Store"]
 
-Monitoring
+AUDIT["Audit Logs"]
 
-Logging
+end
+
+%% ==========================
+%% INFRASTRUCTURE
+%% ==========================
+
+subgraph INFRA["Infrastructure"]
+
+POSTGRES["PostgreSQL"]
+
+REDIS["Redis"]
+
+CELERY["Celery"]
+
+OPENAI["OpenAI"]
+
+MONITOR["Monitoring"]
+
+LOGGER["Logging"]
+
+end
+
+%% ==========================
+%% FLOW
+%% ==========================
+
+U1 --> API
+U2 --> API
+U3 --> API
+U4 --> API
+
+API --> AUTH
+API --> CONFIG
+
+API --> MKT
+
+MKT --> SCAN
+
+SCAN --> SETUP
+
+SETUP --> PROB
+
+PROB --> COMMITTEE
+
+COMMITTEE --> DECISION
+
+DECISION --> VALIDATION
+
+VALIDATION --> RISK
+
+RISK --> PORT
+
+PORT --> KNOWLEDGE
+
+KNOWLEDGE --> LEARNING
+
+LEARNING --> LAB
+
+LAB --> REPORT
+
+%% ==========================
+%% AI
+%% ==========================
+
+COACH --- MKT
+COACH --- SCAN
+COACH --- SETUP
+COACH --- PROB
+COACH --- COMMITTEE
+COACH --- DECISION
+COACH --- VALIDATION
+COACH --- RISK
+COACH --- PORT
+COACH --- KNOWLEDGE
+COACH --- LEARNING
+COACH --- LAB
+COACH --- REPORT
+
+COMMITTEE --- MARKET_AGENT
+COMMITTEE --- TECH_AGENT
+COMMITTEE --- PROB_AGENT
+COMMITTEE --- RISK_AGENT
+COMMITTEE --- PORT_AGENT
+COMMITTEE --- BEHAVIOR_AGENT
+COMMITTEE --- RESEARCH_AGENT
+
+%% ==========================
+%% DATA
+%% ==========================
+
+MKT --> MARKETDB
+
+SCAN --> FEATURE
+
+SETUP --> FEATURE
+
+PROB --> FEATURE
+
+DECISION --> EVENTSTORE
+
+KNOWLEDGE --> KNOWLEDGEGRAPH
+
+LAB --> RESEARCHDB
+
+REPORT --> RESEARCHDB
+
+LOGGER --> AUDIT
+
+%% ==========================
+%% INFRA
+%% ==========================
+
+MARKETDB --> POSTGRES
+
+PORTDB --> POSTGRES
+
+RESEARCHDB --> POSTGRES
+
+KNOWLEDGEGRAPH --> POSTGRES
+
+FEATURE --> REDIS
+
+EVENTSTORE --> POSTGRES
+
+API --> OPENAI
+
+REPORT --> CELERY
+
+LOGGER --> MONITOR
+```
