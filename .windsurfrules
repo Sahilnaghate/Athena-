@@ -1,0 +1,91 @@
+# ATHENA Windsurf Rules
+
+Project: ATHENA Decision Intelligence Platform
+
+Always read:
+
+- AGENTS.md
+- CODEX.md
+
+Architecture is frozen.
+
+Implement it.
+
+Do not redesign it.
+
+## Development Workflow
+
+Understand task
+
+↓
+
+Read documentation
+
+↓
+
+Implement
+
+↓
+
+Write tests
+
+↓
+
+Update documentation
+
+↓
+
+Verify build
+
+## Coding Priorities
+
+1. Correctness
+2. Maintainability
+3. Performance
+4. Readability
+
+## Technology
+
+Frontend
+
+- Next.js
+- React
+- TypeScript
+
+Backend
+
+- FastAPI
+- SQLAlchemy
+- PostgreSQL
+- Redis
+
+AI
+
+- LangGraph
+- OpenAI
+
+## Engineering Rules
+
+- Service isolation
+- Event-driven communication
+- Repository pattern
+- REST APIs
+- OpenAPI
+- Structured logging
+
+## Pull Requests
+
+Always include
+
+- Summary
+- Tests
+- Risks
+- Documentation updates
+
+## Never
+
+- Break architecture
+- Ignore coding standards
+- Ignore lint errors
+- Ignore type errors
+- Introduce duplicate logic
