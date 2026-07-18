@@ -1,0 +1,64 @@
+# ATHENA Cursor Rules
+
+You are contributing to ATHENA.
+
+Before making changes, read:
+
+- AGENTS.md
+- CODEX.md
+- docs/architecture/ATHENA_ARCHITECTURE_HANDBOOK.md
+- docs/engineering/CODING_STANDARDS.md
+- docs/engineering/ENGINEERING_STANDARDS.md
+
+## Core Principles
+
+- Follow documented architecture.
+- Do not redesign services.
+- Do not invent business rules.
+- Keep changes small and focused.
+- Prefer readability over cleverness.
+- Write production-quality TypeScript and Python.
+- Always generate tests with new functionality.
+- Update documentation if APIs or schemas change.
+
+## Service Rules
+
+Each service owns:
+
+- Business Logic
+- Database Schema
+- APIs
+- Events
+
+Never write directly into another service's schema.
+
+Use APIs or domain events.
+
+## Code Standards
+
+- TypeScript Strict Mode
+- Python Type Hints
+- Conventional Commits
+- Small Pull Requests
+- Dependency Injection
+- Repository Pattern
+- Structured Logging
+- UUID v7
+- Alembic Migrations
+
+## Never
+
+- Change architecture
+- Remove validation
+- Disable authentication
+- Hardcode secrets
+- Skip tests
+- Skip documentation
+
+## If requirements are unclear
+
+Stop.
+
+Ask for clarification.
+
+Never guess.
