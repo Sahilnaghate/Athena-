@@ -1,8 +1,19 @@
-export interface Logger {
-  info(message: string, context?: Record<string, unknown>): void;
-  error(message: string, context?: Record<string, unknown>): void;
+import pino, { type Logger } from 'pino';
+
+export interface LoggerContext {
+  requestId?: string;
+  correlationId?: string;
+  [key: string]: unknown;
 }
-export const logger: Logger = {
-  info: (message, context) => console.info(message, context),
-  error: (message, context) => console.error(message, context),
-};
+
+export function createLogger(service: string): Logger {
+  return pino({
+    base: { service },
+    formatters: {
+      level: (label) => ({ level: label }),
+    },
+    timestamp: () => `,"timestamp":"${new Date().toISOString()}"`,
+  });
+}
+
+export const logger = createLogger('platform');
