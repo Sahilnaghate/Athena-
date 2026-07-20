@@ -7,6 +7,7 @@ export default function Home() {
         The ATHENA web platform is online. Product services will be introduced in subsequent
         milestones.
       </p>
+      <a className="mt-8 text-cyan-400 underline" href="/market">Open Market Dashboard</a>
     </main>
   );
 }

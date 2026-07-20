@@ -4,11 +4,13 @@ from uuid import uuid4
 
 import redis.asyncio as redis
 from fastapi import FastAPI, Request, Response
+from fastapi.middleware.cors import CORSMiddleware
 from sqlalchemy import text
 
 from app.config import get_settings
 from app.database import engine
 from app.logging import configure_logging
+from app.market.router import router as market_router
 
 logger = configure_logging()
 
@@ -22,6 +24,8 @@ async def lifespan(app: FastAPI):
 
 
 app = FastAPI(title="ATHENA API", version="0.1.0", lifespan=lifespan)
+app.include_router(market_router)
+app.add_middleware(CORSMiddleware, allow_origins=["http://localhost:3000"], allow_methods=["*"], allow_headers=["*"])
 
 
 @app.middleware("http")
