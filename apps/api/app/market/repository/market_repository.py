@@ -38,3 +38,11 @@ class MarketRepository:
 
     def get_market_regime(self, snapshot_id: UUID) -> MarketRegime | None:
         return self._session.scalar(select(MarketRegime).where(MarketRegime.snapshot_id == snapshot_id).order_by(MarketRegime.created_at.desc()))
+
+    def commit(self) -> None:
+        """Commit the current Market persistence transaction."""
+        self._session.commit()
+
+    def rollback(self) -> None:
+        """Rollback a failed Market persistence transaction."""
+        self._session.rollback()

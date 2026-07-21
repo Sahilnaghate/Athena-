@@ -29,4 +29,4 @@ def test_mock_provider_returns_valid_bull_regime() -> None:
 
 def test_snapshot_dto_rejects_invalid_health_score() -> None:
     with pytest.raises(ValidationError):
-        MarketSnapshotData(snapshot_time=MockMarketDataProvider().get_market_snapshot().snapshot_time, nifty50=1, sensex=1, india_vix=1, advance_decline_ratio=1, market_health_score=101)
+        MarketSnapshotData(snapshot_time=MockMarketDataProvider().get_market_snapshot().snapshot_time, nifty50=1, sensex=1, india_vix=1, advance_decline_ratio=1, breadth_score=1, market_health_score=101)
