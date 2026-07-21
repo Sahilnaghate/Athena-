@@ -2,7 +2,7 @@ from alembic import context
 from sqlalchemy import engine_from_config, pool
 
 from app.database import Base
-from app.market import models  # noqa: F401
+from app.market.models import market  # noqa: F401
 
 config = context.config
 
