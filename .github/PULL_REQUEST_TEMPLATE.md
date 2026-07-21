@@ -1,222 +1,59 @@
-# Pull Request
-
 ## Summary
 
-Provide a concise summary of the changes.
+Implements Milestone **M2-01 – Market Database Schema**.
 
-Example:
-
-- Added Market Intelligence Service
-- Implemented Market Repository
-- Added Market APIs
-- Added unit and integration tests
+This Pull Request establishes the Market persistence layer and database foundation for ATHENA.
 
 ---
 
-## Related Issue
+## Included
 
-Closes #
-
-or
-
-Related to #
-
----
-
-## Type of Change
-
-Select all that apply.
-
-- [ ] New Feature
-- [ ] Bug Fix
-- [ ] Refactoring
-- [ ] Performance Improvement
-- [ ] Documentation
-- [ ] Tests
-- [ ] CI/CD
-- [ ] Security
-- [ ] Database Migration
-- [ ] Breaking Change
-
----
-
-## Scope
-
-Which ATHENA module is affected?
-
-- [ ] Platform
-- [ ] Market Intelligence
-- [ ] Scanner Intelligence
-- [ ] Setup Intelligence
-- [ ] Probability Engine
-- [ ] Decision Engine
-- [ ] Validation Engine
-- [ ] Risk Engine
-- [ ] Portfolio
-- [ ] Knowledge
-- [ ] Learning
-- [ ] Reporting
-- [ ] AI
-- [ ] Infrastructure
-- [ ] Documentation
-
----
-
-## Implementation Details
-
-Describe the implementation.
-
-Include:
-
-- New classes
-- Services
-- APIs
-- Database changes
-- Events
-- UI changes
-
----
-
-## Database Changes
-
-- [ ] No database changes
-
-OR
-
-Describe:
-
-- New tables
-- Modified tables
+- PostgreSQL `market` schema
+- SQLAlchemy 2 models
 - Alembic migration
-- Indexes
-- Constraints
+- Repository layer
+- Seed script
+- Repository tests
+- Migration tests
+- Model tests
 
 ---
 
-## API Changes
+## Excluded
 
-- [ ] No API changes
+This PR intentionally does **not** include:
 
-OR
+- Market Service
+- FastAPI APIs
+- Dashboard
+- Mock Market Provider
+- Business Logic
 
-List:
-
-- New endpoints
-- Modified endpoints
-- Removed endpoints
-
----
-
-## Testing
-
-Select completed tests.
-
-- [ ] Unit Tests
-- [ ] Integration Tests
-- [ ] API Tests
-- [ ] UI Tests
-- [ ] Manual Testing
-
-Test Summary:
-
-```
-Paste test output here
-```
+These will be implemented in subsequent milestones.
 
 ---
 
-## Screenshots
+## Validation
 
-If applicable, include screenshots or screen recordings.
-
----
-
-## Documentation
-
-Documentation updated?
-
-- [ ] README
-- [ ] API Documentation
-- [ ] Database Documentation
-- [ ] Architecture Documentation
-- [ ] Sprint Documentation
-- [ ] Changelog
+- ✅ Clean PostgreSQL migration
+- ✅ Schema created successfully
+- ✅ Tables created
+- ✅ Foreign keys verified
+- ✅ Indexes verified
+- ✅ Seed script executed
+- ✅ Repository tests passed
+- ✅ Model tests passed
+- ✅ Migration tests passed
+- ✅ Docker build passed
 
 ---
 
-## Security
+## Milestone
 
-Confirm:
-
-- [ ] No secrets committed
-- [ ] Input validation implemented
-- [ ] Authentication respected
-- [ ] Authorization respected
+M2-01 — Market Database Schema
 
 ---
 
-## Performance
+## Next Milestone
 
-Does this change affect performance?
-
-- [ ] No
-
-If yes, explain.
-
----
-
-## Breaking Changes
-
-- [ ] No
-
-If yes, describe migration steps.
-
----
-
-## Deployment Notes
-
-Anything required before deployment?
-
-Examples:
-
-- Database migration
-- Environment variables
-- Docker rebuild
-
----
-
-## Risks
-
-Describe any known limitations or risks.
-
----
-
-## Checklist
-
-Before requesting review:
-
-- [ ] Code builds successfully
-- [ ] Tests pass
-- [ ] Lint passes
-- [ ] Documentation updated
-- [ ] OpenAPI updated (if applicable)
-- [ ] Alembic migration included (if applicable)
-- [ ] No debug code
-- [ ] No commented-out code
-- [ ] Branch is up to date
-
----
-
-## Reviewer Notes
-
-Anything reviewers should pay special attention to?
-
----
-
-## Definition of Done
-
-- [ ] Feature complete
-- [ ] Architecture respected
-- [ ] Tests passing
-- [ ] Documentation updated
-- [ ] Ready for merge
+M2-02 — Mock Market Data Provider
