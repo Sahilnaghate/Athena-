@@ -9,6 +9,7 @@ from sqlalchemy import text
 from app.config import get_settings
 from app.database import engine
 from app.logging import configure_logging
+from app.market.router import router as market_router
 
 logger = configure_logging()
 
@@ -22,6 +23,7 @@ async def lifespan(app: FastAPI):
 
 
 app = FastAPI(title="ATHENA API", version="0.1.0", lifespan=lifespan)
+app.include_router(market_router)
 
 
 @app.middleware("http")

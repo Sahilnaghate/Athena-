@@ -13,6 +13,7 @@ class MarketSnapshotData(BaseModel):
     sensex: float = Field(gt=0)
     india_vix: float = Field(gt=0)
     advance_decline_ratio: float = Field(gt=0)
+    breadth_score: float = Field(ge=0, le=100)
     market_health_score: float = Field(ge=0, le=100)
 
 
